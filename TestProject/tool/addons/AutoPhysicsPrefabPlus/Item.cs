@@ -18,25 +18,27 @@ public partial class Item : Node
 		Capsule = 2
 	}
 
-
-    [Export] private EditorResourcePicker assetView;
     [Export] private Label assetName;
     [Export] private OptionButton bodyOption;
     [Export] private OptionButton shapeOption;
-    [Export] private VBoxContainer rigidbody;
-    [Export] private VBoxContainer characterbody;
-    [Export] private VBoxContainer staticbody;
+    [Export] private VBoxContainer rigidbodyContainer;
+    [Export] private VBoxContainer characterbodyContainer;
+    [Export] private VBoxContainer staticbodyContainer;
     [Export] private Slider massSlider;
     [Export] private Label massLabel;
-    [Export] private VBoxContainer box;
-    [Export] private VBoxContainer sphere;
-    [Export] private VBoxContainer capsule;
-    [Export] private SpinBox x;
-	[Export] private SpinBox y;
-    [Export] private SpinBox z;
-	[Export] private SpinBox radius;
-	[Export] private SpinBox _base;
-	[Export] private SpinBox height;
+    [Export] private VBoxContainer boxContainer;
+    [Export] private VBoxContainer sphereContainer;
+    [Export] private VBoxContainer capsuleContainer;
+    [Export] private SpinBox boxWidthSpinbox;
+	[Export] private SpinBox boxHeightSpinbox;
+    [Export] private SpinBox boxDepthSpinbox;
+	[Export] private SpinBox sphereRadiusSpinbox;
+	[Export] private SpinBox capsuleBaseSpinbox;
+	[Export] private SpinBox capsuleHeightSpinbox;
+
+    public PackedScene asset;
+    public string filename;
+    public string extension;
 
     public Body myBody = Body.Rigidbody;
     public Shape myShape = Shape.Box;
@@ -52,9 +54,9 @@ public partial class Item : Node
             bodyOption.AddItem(body.ToString(), (int)body);
         }
         bodyGroups = new VBoxContainer[bodyOption.ItemCount];
-        bodyGroups[(int)Body.Rigidbody] = rigidbody;
-        bodyGroups[(int)Body.Characterbody] = characterbody;
-        bodyGroups[(int)Body.Staticbody] = staticbody;
+        bodyGroups[(int)Body.Rigidbody] = rigidbodyContainer;
+        bodyGroups[(int)Body.Characterbody] = characterbodyContainer;
+        bodyGroups[(int)Body.Staticbody] = staticbodyContainer;
 
 		bodyOption.Selected = (int)myBody;
         OnBodySelected((int)myBody);
@@ -65,20 +67,38 @@ public partial class Item : Node
             shapeOption.AddItem(shape.ToString(), (int)shape);
         }
         shapeGroups = new VBoxContainer[shapeOption.ItemCount];
-        shapeGroups[(int)Shape.Box] = box;
-        shapeGroups[(int)Shape.Sphere] = sphere;
-        shapeGroups[(int)Shape.Capsule] = capsule;
+        shapeGroups[(int)Shape.Box] = boxContainer;
+        shapeGroups[(int)Shape.Sphere] = sphereContainer;
+        shapeGroups[(int)Shape.Capsule] = capsuleContainer;
 
         shapeOption.Selected = (int)myShape;
         OnShapeSelected((int)myShape);
 
+        massSlider.Value = 1f;
+        OnMassChanged(true);
+        boxWidthSpinbox.Value = 1f;
+        boxHeightSpinbox.Value = 1f;
+        boxDepthSpinbox.Value = 1f;
+        sphereRadiusSpinbox.Value = 1f;
+        capsuleBaseSpinbox.Value = 1f;
+        capsuleHeightSpinbox.Value = 1f;
 
+        massSlider.DragEnded += OnMassChanged;
         bodyOption.ItemSelected += OnBodySelected;
         shapeOption.ItemSelected += OnShapeSelected;
     }
 
+    public void SetAsset(PackedScene _asset, string _filename, string _extension)
+    {
+        asset = _asset;
+        filename = _filename;
+        extension = _extension;
+        assetName.Text = "File: " + filename + extension;
+    }
+
     public override void _ExitTree()
     {
+        massSlider.DragEnded -= OnMassChanged;
         bodyOption.ItemSelected -= OnBodySelected;
         shapeOption.ItemSelected -= OnShapeSelected;
     }
@@ -101,5 +121,10 @@ public partial class Item : Node
             shapeGroups[i].Visible = false;
         }
         shapeGroups[(int)myShape].Visible = true;
+    }
+
+    private void OnMassChanged(bool b)
+    {
+        massLabel.Text = "Mass: " + massSlider.Value + "kg";
     }
 }

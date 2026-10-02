@@ -12,6 +12,10 @@ public partial class AutoPhysicsPrefabPlusUI : Control
 
     [Export] private Button doitButton;
 
+    [Export] private PackedScene itemPrefab;
+
+    [Export] private VBoxContainer itemContainer;
+
     public override void _EnterTree()
     {
         pathPrefix = ProjectSettings.GlobalizePath("res://");
@@ -48,6 +52,17 @@ public partial class AutoPhysicsPrefabPlusUI : Control
 
     public void LoadAll()
     {
+        FetchConfig();
         tool.LoadAll();
+        foreach(Node node in itemContainer.GetChildren())
+        {
+            node.QueueFree();
+        }
+        foreach(AutoPhysicsObject obj in tool.loadedItems)
+        {
+            Item item = itemPrefab.Instantiate<Item>();
+            item.SetAsset(obj.asset, obj.filename, obj.extension);
+            itemContainer.AddChild(item);
+        }
     }
 }

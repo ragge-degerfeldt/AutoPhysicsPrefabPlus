@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://d3jdtrl85pw71"]
+
+[ext_resource type="Script" uid="uid://d1c23y1of4iyd" path="res://addons/AutoPhysicsPrefabPlus/Item.cs" id="1_hii8y"]
+
+[node name="Item" type="MarginContainer" unique_id=1344113977 node_paths=PackedStringArray("assetName", "bodyOption", "shapeOption", "rigidbodyContainer", "characterbodyContainer", "staticbodyContainer", "massSlider", "massLabel", "boxContainer", "sphereContainer", "capsuleContainer", "boxWidthSpinbox", "boxHeightSpinbox", "boxDepthSpinbox", "sphereRadiusSpinbox", "capsuleBaseSpinbox", "capsuleHeightSpinbox")]
+script = ExtResource("1_hii8y")
+assetName = NodePath("HBoxContainer/VBoxContainer/Label")
+bodyOption = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/OptionButton")
+shapeOption = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/OptionButton2")
+rigidbodyContainer = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody")
+characterbodyContainer = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Characterbody")
+staticbodyContainer = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Staticbody")
+massSlider = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody/HSlider")
+massLabel = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody/Label")
+boxContainer = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Box")
+sphereContainer = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Capsule")
+capsuleContainer = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Sphere")
+boxWidthSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Box/SpinBox")
+boxHeightSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Box/SpinBox2")
+boxDepthSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Box/SpinBox3")
+sphereRadiusSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Sphere/SpinBox")
+capsuleBaseSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Capsule/SpinBox2")
+capsuleHeightSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Capsule/SpinBox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=867818672]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VSplitContainer" parent="HBoxContainer" unique_id=625441594]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offsets = PackedInt32Array(23, 78)
+split_offset = 23
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=939595076]
+layout_mode = 2
+text = "File: Objectname.glb"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=373961970]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1498410084]
+custom_minimum_size = Vector2(164.105, 0)
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Rigidbody"
+popup/item_0/id = 0
+popup/item_1/text = "Characterbody"
+popup/item_1/id = 1
+popup/item_2/text = "Staticbody"
+popup/item_2/id = 2
+
+[node name="Rigidbody" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1122924147]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody" unique_id=1227855764]
+custom_maximum_size = Vector2(107.36, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+value = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody" unique_id=1874415801]
+layout_mode = 2
+text = "Mass: 1kg"
+
+[node name="Characterbody" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1112142197]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Staticbody" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=12848422]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=2116977477]
+layout_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1536338490]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Box"
+popup/item_0/id = 0
+popup/item_1/text = "Sphere"
+popup/item_1/id = 1
+popup/item_2/text = "Capsule"
+popup/item_2/id = 2
+
+[node name="Box" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=564841933]
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer/HBoxContainer2/Box" unique_id=1444728153]
+layout_mode = 2
+step = 0.1
+value = 1.0
+prefix = "X:"
+suffix = "m"
+
+[node name="SpinBox2" type="SpinBox" parent="HBoxContainer/VBoxContainer/HBoxContainer2/Box" unique_id=1114135322]
+layout_mode = 2
+step = 0.1
+value = 1.0
+prefix = "Y:"
+suffix = "m"
+
+[node name="SpinBox3" type="SpinBox" parent="HBoxContainer/VBoxContainer/HBoxContainer2/Box" unique_id=1526877907]
+layout_mode = 2
+step = 0.1
+value = 1.0
+prefix = "Z:"
+suffix = "m"
+
+[node name="Capsule" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=497220332]
+visible = false
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer/HBoxContainer2/Capsule" unique_id=870695145]
+custom_minimum_size = Vector2(132.95, 0)
+layout_mode = 2
+step = 0.1
+value = 1.0
+prefix = "Height:"
+suffix = "m"
+
+[node name="SpinBox2" type="SpinBox" parent="HBoxContainer/VBoxContainer/HBoxContainer2/Capsule" unique_id=1336833152]
+layout_mode = 2
+step = 0.1
+value = 1.0
+prefix = "Base:"
+suffix = "m"
+
+[node name="Sphere" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=515080767]
+visible = false
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer/HBoxContainer2/Sphere" unique_id=1748687333]
+custom_minimum_size = Vector2(132.95, 0)
+layout_mode = 2
+step = 0.1
+value = 1.0
+prefix = "Radius:"
+suffix = "m"
