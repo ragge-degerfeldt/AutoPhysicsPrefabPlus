@@ -1,0 +1,276 @@
+[gd_scene format=3 uid="uid://ch6abpmx1p1n7"]
+
+[ext_resource type="Script" uid="uid://bmrmhra21hr2r" path="res://addons/AutoPhysicsPrefabPlus/AutoPhysicsPrefabPlusUI.cs" id="1_rqvkg"]
+[ext_resource type="Script" uid="uid://bd3be6algiani" path="res://addons/AutoPhysicsPrefabPlus/PathValidation.cs" id="2_yst88"]
+[ext_resource type="Texture2D" uid="uid://dqmt2u0djxcs5" path="res://addons/AutoPhysicsPrefabPlus/icons/Windows_11_FOLDER_GREY.png" id="3_mhlqo"]
+[ext_resource type="Script" uid="uid://d1c23y1of4iyd" path="res://addons/AutoPhysicsPrefabPlus/Item.cs" id="4_mhlqo"]
+
+[node name="UI" type="Control" unique_id=999133170 node_paths=PackedStringArray("inputPath", "outputPath", "doitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -789.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rqvkg")
+inputPath = NodePath("ListView/InputPathValidation")
+outputPath = NodePath("ListView/OutputPathValidation")
+doitButton = NodePath("ListView/HBoxContainer/Button")
+
+[node name="ListView" type="VBoxContainer" parent="." unique_id=1009775957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InputPathValidation" type="MarginContainer" parent="ListView" unique_id=2004400164 node_paths=PackedStringArray("pickFolderDialog", "folderLineEdit", "invalidPathLabel", "pickFolderButton")]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 2
+script = ExtResource("2_yst88")
+pickFolderDialog = NodePath("EditorFileDialog")
+folderLineEdit = NodePath("VBoxContainer/HBoxContainer/LineEdit")
+invalidPathLabel = NodePath("VBoxContainer/HBoxContainer2/Label")
+pickFolderButton = NodePath("VBoxContainer/HBoxContainer/Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ListView/InputPathValidation" unique_id=1972209840]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ListView/InputPathValidation/VBoxContainer" unique_id=573893379]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ListView/InputPathValidation/VBoxContainer/HBoxContainer2" unique_id=1445759631]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+text = "Input folder"
+
+[node name="Label" type="Label" parent="ListView/InputPathValidation/VBoxContainer/HBoxContainer2" unique_id=1380402229]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Invalid Path!!!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ListView/InputPathValidation/VBoxContainer" unique_id=1076635502]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ListView/InputPathValidation/VBoxContainer/HBoxContainer" unique_id=1957873848]
+custom_minimum_size = Vector2(37.54, 0)
+layout_mode = 2
+icon = ExtResource("3_mhlqo")
+expand_icon = true
+
+[node name="LineEdit" type="LineEdit" parent="ListView/InputPathValidation/VBoxContainer/HBoxContainer" unique_id=308677178]
+layout_mode = 2
+size_flags_horizontal = 3
+caret_blink = true
+
+[node name="EditorFileDialog" type="EditorFileDialog" parent="ListView/InputPathValidation" unique_id=1512558155]
+oversampling_override = 1.0
+title = "Open a Directory"
+initial_position = 4
+size = Vector2i(709, 360)
+file_mode = 2
+favorites_enabled = false
+
+[node name="OutputPathValidation" type="MarginContainer" parent="ListView" unique_id=1131076797 node_paths=PackedStringArray("pickFolderDialog", "folderLineEdit", "invalidPathLabel", "pickFolderButton")]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 2
+script = ExtResource("2_yst88")
+pickFolderDialog = NodePath("EditorFileDialog")
+folderLineEdit = NodePath("VBoxContainer/HBoxContainer/LineEdit")
+invalidPathLabel = NodePath("VBoxContainer/HBoxContainer2/Label")
+pickFolderButton = NodePath("VBoxContainer/HBoxContainer/Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ListView/OutputPathValidation" unique_id=1640395740]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ListView/OutputPathValidation/VBoxContainer" unique_id=1773110289]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ListView/OutputPathValidation/VBoxContainer/HBoxContainer2" unique_id=2143255238]
+layout_mode = 2
+text = "Output folder"
+
+[node name="Label" type="Label" parent="ListView/OutputPathValidation/VBoxContainer/HBoxContainer2" unique_id=1255512925]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Invalid Path!!!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ListView/OutputPathValidation/VBoxContainer" unique_id=1597267815]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ListView/OutputPathValidation/VBoxContainer/HBoxContainer" unique_id=1637997611]
+custom_minimum_size = Vector2(37.54, 0)
+layout_mode = 2
+icon = ExtResource("3_mhlqo")
+expand_icon = true
+
+[node name="LineEdit" type="LineEdit" parent="ListView/OutputPathValidation/VBoxContainer/HBoxContainer" unique_id=103025890]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditorFileDialog" type="EditorFileDialog" parent="ListView/OutputPathValidation" unique_id=1844044865]
+oversampling_override = 1.0
+title = "Open a Directory"
+initial_position = 4
+size = Vector2i(709, 360)
+file_mode = 2
+favorites_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ListView" unique_id=21520129]
+custom_minimum_size = Vector2(0, 27.655)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ListView/HBoxContainer" unique_id=122823006]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Process All"
+
+[node name="Item" type="MarginContainer" parent="ListView" unique_id=1797864580 node_paths=PackedStringArray("assetView", "assetName", "bodyOption", "shapeOption", "rigidbody", "characterbody", "staticbody", "massSlider", "massLabel", "box", "sphere", "capsule", "x", "y", "z", "radius", "_base", "height")]
+layout_mode = 2
+script = ExtResource("4_mhlqo")
+assetView = NodePath("HBoxContainer/EditorResourcePicker")
+assetName = NodePath("HBoxContainer/VBoxContainer/Label")
+bodyOption = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/OptionButton")
+shapeOption = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/OptionButton2")
+rigidbody = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody")
+characterbody = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Characterbody")
+staticbody = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Staticbody")
+massSlider = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody/HSlider")
+massLabel = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody/Label")
+box = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Box")
+sphere = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Sphere")
+capsule = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Capsule")
+x = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Box/SpinBox")
+y = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Box/SpinBox2")
+z = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Box/SpinBox3")
+radius = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Sphere/SpinBox")
+_base = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Capsule/SpinBox2")
+height = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Capsule/SpinBox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ListView/Item" unique_id=210788425]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="EditorResourcePicker" type="EditorResourcePicker" parent="ListView/Item/HBoxContainer" unique_id=1846299651]
+custom_minimum_size = Vector2(80, 80)
+custom_maximum_size = Vector2(80, 80)
+layout_mode = 2
+editable = false
+
+[node name="VBoxContainer" type="VSplitContainer" parent="ListView/Item/HBoxContainer" unique_id=1043891034]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offsets = PackedInt32Array(23, 78)
+split_offset = 23
+
+[node name="Label" type="Label" parent="ListView/Item/HBoxContainer/VBoxContainer" unique_id=1962734081]
+layout_mode = 2
+text = "File: Objectname.glb"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ListView/Item/HBoxContainer/VBoxContainer" unique_id=1317253101]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=203232218]
+custom_minimum_size = Vector2(164.105, 0)
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Rigidbody"
+popup/item_0/id = 0
+popup/item_1/text = "Characterbody"
+popup/item_1/id = 1
+popup/item_2/text = "Staticbody"
+popup/item_2/id = 2
+
+[node name="Rigidbody" type="VBoxContainer" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=345863047]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody" unique_id=703601430]
+custom_maximum_size = Vector2(107.36, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+
+[node name="Label" type="Label" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer/Rigidbody" unique_id=1012323984]
+layout_mode = 2
+text = "Mass: 0kg"
+
+[node name="Characterbody" type="VBoxContainer" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1514733543]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Staticbody" type="VBoxContainer" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=450686023]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ListView/Item/HBoxContainer/VBoxContainer" unique_id=1410581874]
+layout_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=89551752]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Box"
+popup/item_0/id = 0
+popup/item_1/text = "Sphere"
+popup/item_1/id = 1
+popup/item_2/text = "Capsule"
+popup/item_2/id = 2
+
+[node name="Box" type="VBoxContainer" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1923187313]
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2/Box" unique_id=1299744335]
+layout_mode = 2
+step = 0.1
+prefix = "X:"
+suffix = "m"
+
+[node name="SpinBox2" type="SpinBox" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2/Box" unique_id=2090585925]
+layout_mode = 2
+step = 0.1
+prefix = "Y:"
+suffix = "m"
+
+[node name="SpinBox3" type="SpinBox" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2/Box" unique_id=381932229]
+layout_mode = 2
+step = 0.1
+prefix = "Z:"
+suffix = "m"
+
+[node name="Capsule" type="VBoxContainer" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1272677873]
+visible = false
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2/Capsule" unique_id=431724590]
+custom_minimum_size = Vector2(132.95, 0)
+layout_mode = 2
+step = 0.1
+prefix = "Height:"
+suffix = "m"
+
+[node name="SpinBox2" type="SpinBox" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2/Capsule" unique_id=2017681846]
+layout_mode = 2
+step = 0.1
+prefix = "Base:"
+suffix = "m"
+
+[node name="Sphere" type="VBoxContainer" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1638637011]
+visible = false
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="ListView/Item/HBoxContainer/VBoxContainer/HBoxContainer2/Sphere" unique_id=604371216]
+custom_minimum_size = Vector2(132.95, 0)
+layout_mode = 2
+step = 0.1
+prefix = "Radius:"
+suffix = "m"

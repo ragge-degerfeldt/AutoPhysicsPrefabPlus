@@ -1,0 +1,2 @@
+res://addons/AutoPhysicsPrefabPlus/DefaultInput
+res://addons/AutoPhysicsPrefabPlus/DefaultOutput
