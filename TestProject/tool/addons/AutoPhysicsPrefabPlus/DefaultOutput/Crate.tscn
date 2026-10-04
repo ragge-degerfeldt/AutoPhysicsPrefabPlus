@@ -1,16 +1,16 @@
-[gd_scene format=4 uid="uid://b0gk63vkh2cip"]
+[gd_scene format=4 uid="uid://bugeqlnx86w04"]
 
-[ext_resource type="Texture2D" uid="uid://mcg2f6emdk4h" path="res://addons/AutoPhysicsPrefabPlus/DefaultInput/Crate_Albedo.png" id="1_lj74b"]
-[ext_resource type="Texture2D" uid="uid://dhcnpvbrjmgck" path="res://addons/AutoPhysicsPrefabPlus/DefaultInput/Crate_Roughness.png" id="2_5p3x3"]
+[ext_resource type="Texture2D" uid="uid://mcg2f6emdk4h" path="res://addons/AutoPhysicsPrefabPlus/DefaultInput/Crate_Albedo.png" id="1_scvmr"]
+[ext_resource type="Texture2D" uid="uid://dhcnpvbrjmgck" path="res://addons/AutoPhysicsPrefabPlus/DefaultInput/Crate_Roughness.png" id="2_p1fsh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tj4q7"]
 resource_name = "Material.001"
 cull_mode = 2
-albedo_texture = ExtResource("1_lj74b")
+albedo_texture = ExtResource("1_scvmr")
 metallic = 1.0
-metallic_texture = ExtResource("2_5p3x3")
+metallic_texture = ExtResource("2_p1fsh")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_5p3x3")
+roughness_texture = ExtResource("2_p1fsh")
 roughness_texture_channel = 1
 metadata/_gltf_primary_texture_coord = 0
 
@@ -46,9 +46,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_di66o")
 
-[node name="Crate" type="Node3D" unique_id=957598339]
+[node name="Crate" type="Node3D" unique_id=2087053194]
 
-[node name="Cube" type="MeshInstance3D" parent="." unique_id=1120024039]
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=987139501]
 mesh = SubResource("ArrayMesh_qmpr7")
 
-[node name="@RigidBody3D@20706" type="RigidBody3D" parent="." unique_id=2052366231]
+[node name="@RigidBody3D@22012" type="RigidBody3D" parent="." unique_id=1878221317]

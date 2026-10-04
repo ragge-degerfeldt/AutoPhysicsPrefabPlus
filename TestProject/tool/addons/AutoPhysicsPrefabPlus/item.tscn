@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d1c23y1of4iyd" path="res://addons/AutoPhysicsPrefabPlus/Item.cs" id="1_hii8y"]
 
-[node name="Item" type="MarginContainer" unique_id=1344113977 node_paths=PackedStringArray("assetName", "bodyOption", "shapeOption", "rigidbodyContainer", "characterbodyContainer", "staticbodyContainer", "massSlider", "massLabel", "boxContainer", "sphereContainer", "capsuleContainer", "boxWidthSpinbox", "boxHeightSpinbox", "boxDepthSpinbox", "sphereRadiusSpinbox", "capsuleBaseSpinbox", "capsuleHeightSpinbox")]
+[node name="Item" type="MarginContainer" unique_id=1344113977 node_paths=PackedStringArray("assetName", "bodyOption", "shapeOption", "rigidbodyContainer", "characterbodyContainer", "staticbodyContainer", "massSlider", "massLabel", "boxContainer", "sphereContainer", "capsuleContainer", "boxWidthSpinbox", "boxHeightSpinbox", "boxDepthSpinbox", "sphereRadiusSpinbox", "capsuleBaseSpinbox", "capsuleHeightSpinbox", "processButton")]
 script = ExtResource("1_hii8y")
 assetName = NodePath("HBoxContainer/VBoxContainer/Label")
 bodyOption = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/OptionButton")
@@ -21,6 +21,7 @@ boxDepthSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Box/SpinB
 sphereRadiusSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Sphere/SpinBox")
 capsuleBaseSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Capsule/SpinBox2")
 capsuleHeightSpinbox = NodePath("HBoxContainer/VBoxContainer/HBoxContainer2/Capsule/SpinBox")
+processButton = NodePath("HBoxContainer/VBoxContainer/Button")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=867818672]
 custom_minimum_size = Vector2(0, 80)
@@ -29,7 +30,7 @@ layout_mode = 2
 [node name="VBoxContainer" type="VSplitContainer" parent="HBoxContainer" unique_id=625441594]
 layout_mode = 2
 size_flags_horizontal = 3
-split_offsets = PackedInt32Array(23, 78)
+split_offsets = PackedInt32Array(23, 78, 0, 0)
 split_offset = 23
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=939595076]
@@ -144,3 +145,11 @@ step = 0.1
 value = 1.0
 prefix = "Radius:"
 suffix = "m"
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1391930105]
+layout_mode = 2
+text = "Process"
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=1551337424]
+custom_minimum_size = Vector2(0, 11.83)
+layout_mode = 2

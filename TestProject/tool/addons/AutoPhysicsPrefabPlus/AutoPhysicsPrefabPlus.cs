@@ -12,7 +12,7 @@ public partial class AutoPhysicsPrefabPlus : EditorPlugin
 
     public Config config;
 
-    public List<AutoPhysicsObject> loadedItems = new List<AutoPhysicsObject>();
+    public List<Item> loadedItems = new List<Item>();
 
     public override void _EnterTree()
     {
@@ -84,13 +84,8 @@ public partial class AutoPhysicsPrefabPlus : EditorPlugin
     {
         Debug.Print("Loading " + filename + extension);
         PackedScene asset = GD.Load<PackedScene>(ProcessPath(config.inputPath) + filename + extension);
-        AutoPhysicsObject obj = new AutoPhysicsObject();
-
-        obj.asset = asset;
-        obj.filename = filename;
-        obj.extension = extension;
-
-        loadedItems.Add(obj);
+        Item item = dockUI.CreateItem(asset,filename,extension);
+        loadedItems.Add(item);
     }
 
     public void ProcessAll()
@@ -98,11 +93,13 @@ public partial class AutoPhysicsPrefabPlus : EditorPlugin
         Debug.Print("Processing all GLTF files in " + ProcessPath(config.inputPath));
         for (int i = 0; i < loadedItems.Count; i++)
         {
-            ProcessGLTF(loadedItems[i]);
+            dockUI.processAllItem.SetAsset(loadedItems[i].asset,loadedItems[i].filename,loadedItems[i].extension);
+            ProcessGLTF(dockUI.processAllItem);
         }
+        dockUI.processAllItem.SetAsset(null,"","");
     }
 
-    private void ProcessGLTF(AutoPhysicsObject item)
+    public void ProcessGLTF(Item item)
     {
         Debug.Print("Processing " + item.filename + item.extension);
 

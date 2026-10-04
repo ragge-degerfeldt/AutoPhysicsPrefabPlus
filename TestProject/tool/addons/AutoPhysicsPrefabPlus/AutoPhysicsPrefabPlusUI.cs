@@ -10,27 +10,26 @@ public partial class AutoPhysicsPrefabPlusUI : Control
     [Export] private PathValidation inputPath;
     [Export] private PathValidation outputPath;
 
-    [Export] private Button doitButton;
+    [Export] private VBoxContainer processAllContainer;
 
     [Export] private PackedScene itemPrefab;
 
     [Export] private VBoxContainer itemContainer;
 
+    public Item processAllItem;
+
     public override void _EnterTree()
     {
         pathPrefix = ProjectSettings.GlobalizePath("res://");
         Debug.Print("Initialized project path: " + pathPrefix);
-
-        doitButton.ButtonDown += DoIt;
-    }
-
-    public override void _ExitTree()
-    {
-        doitButton.ButtonDown -= DoIt;
     }
 
     public void Initialize(AutoPhysicsPrefabPlus _tool)
     {
+        processAllItem = itemPrefab.Instantiate<Item>();
+        processAllItem.SetAction(() => ProcessAll(processAllItem));
+        processAllContainer.AddChild(processAllItem);
+        processAllContainer.MoveChild(processAllItem,0);
         tool = _tool;
         inputPath.SetPath(tool.config.inputPath);
         outputPath.SetPath(tool.config.outputPath);
@@ -44,7 +43,7 @@ public partial class AutoPhysicsPrefabPlusUI : Control
         tool.config.outputPath = outputPath.HasValidPath() ? outputPath.Path() : tool.config.outputPath;
     }
 
-    private void DoIt()
+    private void ProcessAll(Item item)
     {
         FetchConfig();
         tool.ProcessAll();
@@ -52,17 +51,23 @@ public partial class AutoPhysicsPrefabPlusUI : Control
 
     public void LoadAll()
     {
-        FetchConfig();
-        tool.LoadAll();
         foreach(Node node in itemContainer.GetChildren())
         {
             node.QueueFree();
         }
-        foreach(AutoPhysicsObject obj in tool.loadedItems)
-        {
-            Item item = itemPrefab.Instantiate<Item>();
-            item.SetAsset(obj.asset, obj.filename, obj.extension);
-            itemContainer.AddChild(item);
-        }
+        FetchConfig();
+        tool.LoadAll();
+
+        processAllItem.Visible = tool.loadedItems.Count > 0;
+        processAllItem.SetAsset(null,tool.loadedItems.Count.ToString() + " files","");
+    }
+
+    public Item CreateItem(PackedScene asset, string filename, string extension)
+    {
+        Item item = itemPrefab.Instantiate<Item>();
+        item.SetAsset(asset,filename,extension);
+        item.SetAction(() => tool.ProcessGLTF(item));
+        itemContainer.AddChild(item);
+        return item;
     }
 }

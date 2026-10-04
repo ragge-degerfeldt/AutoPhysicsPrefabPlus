@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [Tool]
-public partial class Item : Node
+public partial class Item : Control
 {
 	public enum Body : int
 	{
@@ -35,6 +35,9 @@ public partial class Item : Node
 	[Export] private SpinBox sphereRadiusSpinbox;
 	[Export] private SpinBox capsuleBaseSpinbox;
 	[Export] private SpinBox capsuleHeightSpinbox;
+    [Export] private Button processButton;
+
+    private Action action;
 
     public PackedScene asset;
     public string filename;
@@ -86,6 +89,12 @@ public partial class Item : Node
         massSlider.DragEnded += OnMassChanged;
         bodyOption.ItemSelected += OnBodySelected;
         shapeOption.ItemSelected += OnShapeSelected;
+        processButton.ButtonDown += ProcessItem;
+    }
+
+    public void SetAction(Action _action)
+    {
+        action = _action;
     }
 
     public void SetAsset(PackedScene _asset, string _filename, string _extension)
@@ -101,6 +110,12 @@ public partial class Item : Node
         massSlider.DragEnded -= OnMassChanged;
         bodyOption.ItemSelected -= OnBodySelected;
         shapeOption.ItemSelected -= OnShapeSelected;
+        processButton.ButtonDown -= ProcessItem;
+    }
+
+    private void ProcessItem()
+    {
+        action();
     }
 
 	private void OnBodySelected(long index)

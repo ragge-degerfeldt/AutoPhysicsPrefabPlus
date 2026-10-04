@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bd3be6algiani" path="res://addons/AutoPhysicsPrefabPlus/PathValidation.cs" id="2_yst88"]
 [ext_resource type="Texture2D" uid="uid://dqmt2u0djxcs5" path="res://addons/AutoPhysicsPrefabPlus/icons/Windows_11_FOLDER_GREY.png" id="3_mhlqo"]
 
-[node name="UI" type="Control" unique_id=999133170 node_paths=PackedStringArray("inputPath", "outputPath", "doitButton", "itemContainer")]
+[node name="UI" type="Control" unique_id=999133170 node_paths=PackedStringArray("inputPath", "outputPath", "processAllContainer", "itemContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,9 +16,9 @@ grow_vertical = 2
 script = ExtResource("1_rqvkg")
 inputPath = NodePath("ListView/InputPathValidation")
 outputPath = NodePath("ListView/OutputPathValidation")
-doitButton = NodePath("ListView/HBoxContainer/Button")
+processAllContainer = NodePath("ListView/TabContainer/Process All")
 itemPrefab = ExtResource("2_mhlqo")
-itemContainer = NodePath("ListView/VBoxContainer")
+itemContainer = NodePath("ListView/TabContainer/Process Individually")
 
 [node name="ListView" type="VBoxContainer" parent="." unique_id=1009775957]
 layout_mode = 1
@@ -124,14 +124,15 @@ size = Vector2i(709, 360)
 file_mode = 2
 favorites_enabled = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ListView" unique_id=21520129]
-custom_minimum_size = Vector2(0, 27.655)
+[node name="TabContainer" type="TabContainer" parent="ListView" unique_id=1632562219]
 layout_mode = 2
+current_tab = 0
 
-[node name="Button" type="Button" parent="ListView/HBoxContainer" unique_id=122823006]
+[node name="Process All" type="VBoxContainer" parent="ListView/TabContainer" unique_id=911005084]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Process All"
+metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ListView" unique_id=1457096516]
+[node name="Process Individually" type="VBoxContainer" parent="ListView/TabContainer" unique_id=1457096516]
+visible = false
 layout_mode = 2
+metadata/_tab_index = 1
