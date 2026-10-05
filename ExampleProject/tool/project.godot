@@ -27,6 +27,12 @@ project/assembly_name="Tool"
 
 enabled=PackedStringArray("res://addons/AutoPhysicsPrefabPlus/plugin.cfg")
 
+[layer_names]
+
+3d_physics/layer_1="One"
+3d_physics/layer_5="Five"
+3d_physics/layer_11="Eleven"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

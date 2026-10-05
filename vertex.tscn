@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dd0o5juejrhu6"]
+
+[ext_resource type="Script" uid="uid://cfwo72kb81qi2" path="res://addons/AutoPhysicsPrefabPlus/Vertex.cs" id="1_6vqcr"]
+
+[node name="Vertex" type="HBoxContainer" unique_id=248970642 node_paths=PackedStringArray("xSpinbox", "ySpinbox", "zSpinbox")]
+size_flags_horizontal = 3
+script = ExtResource("1_6vqcr")
+xSpinbox = NodePath("SpinBox")
+ySpinbox = NodePath("SpinBox2")
+zSpinbox = NodePath("SpinBox3")
+
+[node name="SpinBox" type="SpinBox" parent="." unique_id=411789734]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100.0
+step = 0.1
+prefix = "X:"
+
+[node name="VSeparator2" type="VSeparator" parent="." unique_id=842294911]
+layout_mode = 2
+
+[node name="SpinBox2" type="SpinBox" parent="." unique_id=950229289]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100.0
+step = 0.1
+prefix = "Y:"
+
+[node name="VSeparator" type="VSeparator" parent="." unique_id=1735551412]
+layout_mode = 2
+
+[node name="SpinBox3" type="SpinBox" parent="." unique_id=535537578]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100.0
+step = 0.1
+prefix = "Z:"

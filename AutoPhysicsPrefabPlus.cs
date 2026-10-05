@@ -103,13 +103,92 @@ public partial class AutoPhysicsPrefabPlus : EditorPlugin
     {
         Debug.Print("Processing " + item.filename + item.extension);
 
-        Node3D instance = (Node3D)((item.asset).Instantiate());
-        RigidBody3D rb = new RigidBody3D();
-        instance.AddChild(rb);
-        rb.Owner = instance;
+
+        Node3D mesh = (Node3D)((item.asset).Instantiate());
+
+        Node3D instance = mesh;
+
+        CollisionShape3D collider = new CollisionShape3D();
+        //collider.GlobalPosition = instance.GlobalPosition;
+
+        switch(item.myBody)
+        {
+            case Item.Body.Rigidbody:
+                instance = new RigidBody3D();
+                instance.AddChild(mesh);
+                mesh.Owner = instance;
+                instance.AddChild(collider);
+                //rb.GlobalPosition = instance.GlobalPosition;
+                ((RigidBody3D)instance).Mass = item.GetMass();
+                if(item.IsFragile())
+                {
+                    instance.SetScript(GD.Load<Script>("res://addons/AutoPhysicsPrefabPlus/Fragile.cs"));
+                }
+                collider.Owner = instance;
+                break;
+            case Item.Body.Characterbody:
+                instance = new CharacterBody3D();
+                instance.AddChild(mesh);
+                mesh.Owner = instance;
+                instance.AddChild(collider);
+                collider.Owner = instance;
+                //cb.GlobalPosition = instance.GlobalPosition;
+                break;
+            case Item.Body.Staticbody:
+                instance = new StaticBody3D();
+                instance.AddChild(mesh);
+                mesh.Owner = instance;
+                instance.AddChild(collider);
+                collider.Owner = instance;
+                //sb.GlobalPosition = instance.GlobalPosition;
+                break;
+        }
+
+        ((PhysicsBody3D)instance).CollisionLayer = (uint)item.GetLayer();
+
+        switch(item.myShape)
+        {
+            case Item.Shape.Box:
+                BoxShape3D box = new BoxShape3D();
+                box.Size = new Vector3(item.GetBoxWidth(), item.GetBoxHeight(), item.GetBoxDepth());
+                collider.Shape = box;
+                break;
+            case Item.Shape.Sphere:
+                SphereShape3D sphere = new SphereShape3D();
+                sphere.Radius = item.GetSphereRadius();
+                collider.Shape = sphere;
+                break;
+            case Item.Shape.Capsule:
+                CapsuleShape3D capsule = new CapsuleShape3D();
+                capsule.Radius = item.GetCapsuleRadius();
+                capsule.Height = item.GetCapsuleHeight();
+                collider.Shape = capsule;
+                break;
+            case Item.Shape.Cylinder:
+                CylinderShape3D cylinder = new CylinderShape3D();
+                cylinder.Radius = item.GetCylinderRadius();
+                cylinder.Height = item.GetCylinderHeight();
+                collider.Shape = cylinder;
+                break;
+            case Item.Shape.Convex_Shape:
+                ConvexPolygonShape3D convexShape = new ConvexPolygonShape3D();
+                convexShape.Points = item.GetVertices();
+                collider.Shape = convexShape;
+                break;
+        }
+
+        instance.Name = item.filename;
         PackedScene export = new PackedScene();
         export.Pack(instance);
-        ResourceSaver.Save(export, ProcessPath(config.outputPath) + item.filename + ".tscn");
+
+        string outputFilename = item.filename + ".tscn";
+
+        if(DirAccess.GetFilesAt(ProcessPath(config.outputPath)).Contains(outputFilename))
+        {
+            DirAccess.RemoveAbsolute(ProcessPath(config.outputPath) + outputFilename);
+        }
+
+        ResourceSaver.Save(export, ProcessPath(config.outputPath) + outputFilename);
         instance.QueueFree();
     }
 

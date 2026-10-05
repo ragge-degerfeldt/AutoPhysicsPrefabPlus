@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://ch6abpmx1p1n7"]
+
+[ext_resource type="Script" uid="uid://bmrmhra21hr2r" path="res://addons/AutoPhysicsPrefabPlus/AutoPhysicsPrefabPlusUI.cs" id="1_rqvkg"]
+[ext_resource type="PackedScene" uid="uid://d3jdtrl85pw71" path="res://addons/AutoPhysicsPrefabPlus/item.tscn" id="2_mhlqo"]
+[ext_resource type="Script" uid="uid://bd3be6algiani" path="res://addons/AutoPhysicsPrefabPlus/PathValidation.cs" id="2_yst88"]
+[ext_resource type="Texture2D" uid="uid://dqmt2u0djxcs5" path="res://addons/AutoPhysicsPrefabPlus/icons/Windows_11_FOLDER_GREY.png" id="3_mhlqo"]
+
+[node name="UI" type="Control" unique_id=999133170 node_paths=PackedStringArray("inputPath", "outputPath", "processAllContainer", "itemContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -789.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rqvkg")
+inputPath = NodePath("ListView/InputPathValidation")
+outputPath = NodePath("ListView/OutputPathValidation")
+processAllContainer = NodePath("ListView/TabContainer/Process All")
+itemPrefab = ExtResource("2_mhlqo")
+itemContainer = NodePath("ListView/TabContainer/Process Individually")
+
+[node name="ListView" type="VBoxContainer" parent="." unique_id=1009775957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InputPathValidation" type="MarginContainer" parent="ListView" unique_id=2004400164 node_paths=PackedStringArray("pickFolderDialog", "folderLineEdit", "invalidPathLabel", "pickFolderButton")]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 2
+script = ExtResource("2_yst88")
+pickFolderDialog = NodePath("EditorFileDialog")
+folderLineEdit = NodePath("VBoxContainer/HBoxContainer/LineEdit")
+invalidPathLabel = NodePath("VBoxContainer/HBoxContainer2/Label")
+pickFolderButton = NodePath("VBoxContainer/HBoxContainer/Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ListView/InputPathValidation" unique_id=1972209840]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ListView/InputPathValidation/VBoxContainer" unique_id=573893379]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ListView/InputPathValidation/VBoxContainer/HBoxContainer2" unique_id=1445759631]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+text = "Input folder"
+
+[node name="Label" type="Label" parent="ListView/InputPathValidation/VBoxContainer/HBoxContainer2" unique_id=1380402229]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Invalid Path!!!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ListView/InputPathValidation/VBoxContainer" unique_id=1076635502]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ListView/InputPathValidation/VBoxContainer/HBoxContainer" unique_id=1957873848]
+custom_minimum_size = Vector2(37.54, 0)
+layout_mode = 2
+icon = ExtResource("3_mhlqo")
+expand_icon = true
+
+[node name="LineEdit" type="LineEdit" parent="ListView/InputPathValidation/VBoxContainer/HBoxContainer" unique_id=308677178]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditorFileDialog" type="EditorFileDialog" parent="ListView/InputPathValidation" unique_id=1512558155]
+oversampling_override = 1.0
+title = "Open a Directory"
+initial_position = 4
+size = Vector2i(709, 360)
+file_mode = 2
+favorites_enabled = false
+
+[node name="OutputPathValidation" type="MarginContainer" parent="ListView" unique_id=1131076797 node_paths=PackedStringArray("pickFolderDialog", "folderLineEdit", "invalidPathLabel", "pickFolderButton")]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 2
+script = ExtResource("2_yst88")
+pickFolderDialog = NodePath("EditorFileDialog")
+folderLineEdit = NodePath("VBoxContainer/HBoxContainer/LineEdit")
+invalidPathLabel = NodePath("VBoxContainer/HBoxContainer2/Label")
+pickFolderButton = NodePath("VBoxContainer/HBoxContainer/Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ListView/OutputPathValidation" unique_id=1640395740]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ListView/OutputPathValidation/VBoxContainer" unique_id=1773110289]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ListView/OutputPathValidation/VBoxContainer/HBoxContainer2" unique_id=2143255238]
+layout_mode = 2
+text = "Output folder"
+
+[node name="Label" type="Label" parent="ListView/OutputPathValidation/VBoxContainer/HBoxContainer2" unique_id=1255512925]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Invalid Path!!!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ListView/OutputPathValidation/VBoxContainer" unique_id=1597267815]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ListView/OutputPathValidation/VBoxContainer/HBoxContainer" unique_id=1637997611]
+custom_minimum_size = Vector2(37.54, 0)
+layout_mode = 2
+icon = ExtResource("3_mhlqo")
+expand_icon = true
+
+[node name="LineEdit" type="LineEdit" parent="ListView/OutputPathValidation/VBoxContainer/HBoxContainer" unique_id=103025890]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditorFileDialog" type="EditorFileDialog" parent="ListView/OutputPathValidation" unique_id=1844044865]
+oversampling_override = 1.0
+title = "Open a Directory"
+initial_position = 4
+size = Vector2i(709, 360)
+file_mode = 2
+favorites_enabled = false
+
+[node name="TabContainer" type="TabContainer" parent="ListView" unique_id=1632562219]
+layout_mode = 2
+current_tab = 0
+
+[node name="Process All" type="VBoxContainer" parent="ListView/TabContainer" unique_id=911005084]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Process Individually" type="VBoxContainer" parent="ListView/TabContainer" unique_id=1457096516]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1

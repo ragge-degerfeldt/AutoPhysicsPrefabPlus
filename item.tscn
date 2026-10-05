@@ -1,0 +1,243 @@
+[gd_scene format=3 uid="uid://d3jdtrl85pw71"]
+
+[ext_resource type="Script" uid="uid://d1c23y1of4iyd" path="res://addons/AutoPhysicsPrefabPlus/Item.cs" id="1_hii8y"]
+[ext_resource type="PackedScene" uid="uid://dd0o5juejrhu6" path="res://addons/AutoPhysicsPrefabPlus/vertex.tscn" id="2_5gdw4"]
+
+[node name="Item" type="MarginContainer" unique_id=1344113977 node_paths=PackedStringArray("assetName", "bodyOption", "shapeOption", "layerOption", "rigidbodyContainer", "characterbodyContainer", "staticbodyContainer", "massSlider", "massSpinbox", "fragileCheckbox", "boxContainer", "sphereContainer", "capsuleContainer", "convexShapeContainer", "boxWidthSpinbox", "boxHeightSpinbox", "boxDepthSpinbox", "sphereRadiusSpinbox", "capsuleRadiusSpinbox", "capsuleHeightSpinbox", "verticesSlider", "processButton", "vertices", "layerLabel")]
+offset_right = 294.0
+offset_bottom = 274.0
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+script = ExtResource("1_hii8y")
+assetName = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/Label")
+bodyOption = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/OptionButton")
+shapeOption = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/OptionButton2")
+layerOption = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer3/OptionButton")
+rigidbodyContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/Rigidbody")
+characterbodyContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/Characterbody")
+staticbodyContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/Staticbody")
+massSlider = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/Rigidbody/HSlider")
+massSpinbox = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/Rigidbody/SpinBox")
+fragileCheckbox = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/Rigidbody/CheckBox")
+boxContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Box")
+sphereContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Sphere")
+capsuleContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Capsule")
+convexShapeContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/ConvexShape")
+boxWidthSpinbox = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Box/SpinBox")
+boxHeightSpinbox = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Box/SpinBox2")
+boxDepthSpinbox = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Box/SpinBox3")
+sphereRadiusSpinbox = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Sphere/SpinBox")
+capsuleRadiusSpinbox = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Capsule/SpinBox2")
+capsuleHeightSpinbox = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Capsule/SpinBox")
+verticesSlider = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/ConvexShape/EditorSpinSlider")
+processButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/Button")
+vertices = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/VBoxContainer")
+vertexPrefab = ExtResource("2_5gdw4")
+layerLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer3/Label")
+
+[node name="Panel" type="Panel" parent="." unique_id=2112236323]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=852845853]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=867818672]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VSplitContainer" parent="MarginContainer/HBoxContainer" unique_id=625441594]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offsets = PackedInt32Array(274)
+split_offset = 274
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1178412029]
+layout_mode = 2
+split_offsets = PackedInt32Array(23, 121, 133, 231, 243, 356, 368)
+split_offset = 23
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer" unique_id=939595076]
+layout_mode = 2
+text = "File: Objectname.glb"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer" unique_id=373961970]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer" unique_id=1498410084]
+custom_minimum_size = Vector2(165, 0)
+custom_maximum_size = Vector2(165, -1)
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Rigidbody"
+popup/item_0/id = 0
+popup/item_1/text = "Characterbody"
+popup/item_1/id = 1
+popup/item_2/text = "Staticbody"
+popup/item_2/id = 2
+
+[node name="Rigidbody" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer" unique_id=1122924147]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/Rigidbody" unique_id=1227855764]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.1
+value = 1.0
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/Rigidbody" unique_id=233059678]
+layout_mode = 2
+max_value = 1000.0
+step = 0.1
+value = 1.0
+prefix = "Mass:"
+suffix = "kg"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer/Rigidbody" unique_id=642481744]
+layout_mode = 2
+text = "Fragile"
+
+[node name="Characterbody" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer" unique_id=1112142197]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Staticbody" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer" unique_id=12848422]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer" unique_id=884495899]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer" unique_id=1319138348]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer3" unique_id=1573957026]
+custom_minimum_size = Vector2(165, 0)
+custom_maximum_size = Vector2(165, -1)
+layout_mode = 2
+selected = 1
+item_count = 4
+popup/item_0/text = "No Layer"
+popup/item_0/id = 0
+popup/item_1/text = "One"
+popup/item_1/id = 1
+popup/item_2/text = "Five"
+popup/item_2/id = 5
+popup/item_3/text = "Eleven"
+popup/item_3/id = 11
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer3" unique_id=747830467]
+layout_mode = 2
+text = "Layer 1"
+
+[node name="HSeparator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer" unique_id=1161623389]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer" unique_id=2116977477]
+layout_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2" unique_id=1536338490]
+custom_minimum_size = Vector2(165, 0)
+custom_maximum_size = Vector2(165, -1)
+layout_mode = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "Box"
+popup/item_0/id = 0
+popup/item_1/text = "Sphere"
+popup/item_1/id = 1
+popup/item_2/text = "Capsule"
+popup/item_2/id = 2
+popup/item_3/text = "Cylinder"
+popup/item_3/id = 3
+popup/item_4/text = "Convex Shape"
+popup/item_4/id = 4
+
+[node name="Box" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2" unique_id=564841933]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Box" unique_id=1444728153]
+layout_mode = 2
+step = 0.1
+value = 1.0
+prefix = "X:"
+suffix = "m"
+
+[node name="SpinBox2" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Box" unique_id=1114135322]
+layout_mode = 2
+step = 0.1
+value = 1.0
+prefix = "Y:"
+suffix = "m"
+
+[node name="SpinBox3" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Box" unique_id=1526877907]
+layout_mode = 2
+step = 0.1
+value = 1.0
+prefix = "Z:"
+suffix = "m"
+
+[node name="Capsule" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2" unique_id=497220332]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox2" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Capsule" unique_id=1336833152]
+layout_mode = 2
+step = 0.1
+value = 0.5
+prefix = "Radius:"
+suffix = "m"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Capsule" unique_id=870695145]
+custom_minimum_size = Vector2(132.95, 0)
+layout_mode = 2
+step = 0.1
+value = 2.0
+prefix = "Height:"
+suffix = "m"
+
+[node name="Sphere" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2" unique_id=515080767]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/Sphere" unique_id=1748687333]
+custom_minimum_size = Vector2(132.95, 0)
+layout_mode = 2
+step = 0.1
+value = 0.5
+prefix = "Radius:"
+suffix = "m"
+
+[node name="ConvexShape" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2" unique_id=2145770385]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditorSpinSlider" type="EditorSpinSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/ConvexShape" unique_id=289717462]
+layout_mode = 2
+rounded = true
+suffix = "Vertices"
+editing_integer = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer" unique_id=866028173]
+visible = false
+layout_mode = 2
+
+[node name="HSeparator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer" unique_id=1676764891]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer" unique_id=1391930105]
+layout_mode = 2
+text = "Process"
