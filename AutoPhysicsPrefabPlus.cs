@@ -144,7 +144,11 @@ public partial class AutoPhysicsPrefabPlus : EditorPlugin
                 break;
         }
 
-        ((PhysicsBody3D)instance).CollisionLayer = (uint)item.GetLayer();
+        ((PhysicsBody3D)instance).SetCollisionLayerValue(1, false);
+        foreach(int i in item.GetLayers())
+        {
+            ((PhysicsBody3D)instance).SetCollisionLayerValue(i, true);
+        }
 
         switch(item.myShape)
         {

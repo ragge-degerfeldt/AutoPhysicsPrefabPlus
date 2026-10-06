@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bugeqlnx86w04"]
+
+[ext_resource type="PackedScene" uid="uid://nyn72tlfmk6t" path="res://addons/AutoPhysicsPrefabPlus/DefaultInput/Crate.glb" id="1_sgedb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_scvmr"]
+
+[node name="Crate" type="RigidBody3D" unique_id=1076302069]
+collision_layer = 1040
+
+[node name="Crate" type="Node3D" parent="." unique_id=1276234565 instance=ExtResource("1_sgedb")]
+
+[node name="@CollisionShape3D@20896" type="CollisionShape3D" parent="." unique_id=7043351]
+shape = SubResource("BoxShape3D_scvmr")

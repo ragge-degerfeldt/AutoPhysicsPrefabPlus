@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://fxhrbyxwydr0"]
+
+[ext_resource type="Script" uid="uid://dj8k0euhfwdmb" path="res://addons/AutoPhysicsPrefabPlus/LayerSelect.cs" id="1_hq30y"]
+
+[node name="LayerSelect" type="HBoxContainer" unique_id=2070644443 node_paths=PackedStringArray("checkbox")]
+script = ExtResource("1_hq30y")
+checkbox = NodePath("CheckBox")
+
+[node name="VSeparator2" type="VSeparator" parent="." unique_id=827500606]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="." unique_id=905870734]
+layout_mode = 2
+text = "Layer 1"
+
+[node name="VSeparator" type="VSeparator" parent="." unique_id=747216775]
+layout_mode = 2

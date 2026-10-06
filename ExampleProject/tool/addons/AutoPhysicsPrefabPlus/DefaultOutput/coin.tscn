@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bewruvvix0pw6"]
+
+[ext_resource type="PackedScene" uid="uid://b88vwn7ccup8" path="res://addons/AutoPhysicsPrefabPlus/DefaultInput/coin.glb" id="1_1epuu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kumx5"]
+
+[node name="coin" type="RigidBody3D" unique_id=1163846745]
+collision_layer = 1040
+
+[node name="coin" type="Node3D" parent="." unique_id=743444181 instance=ExtResource("1_1epuu")]
+
+[node name="@CollisionShape3D@20897" type="CollisionShape3D" parent="." unique_id=283961829]
+shape = SubResource("BoxShape3D_kumx5")

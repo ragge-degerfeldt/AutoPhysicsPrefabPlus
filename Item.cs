@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 [Tool]
@@ -24,10 +25,10 @@ public partial class Item : Control
     [Export] private Label assetName;
     [Export] private OptionButton bodyOption;
     [Export] private OptionButton shapeOption;
-    [Export] private OptionButton layerOption;
     [Export] private VBoxContainer rigidbodyContainer;
     [Export] private VBoxContainer characterbodyContainer;
     [Export] private VBoxContainer staticbodyContainer;
+    [Export] private HFlowContainer layerSelectContainer;
     [Export] private Slider massSlider;
     [Export] private SpinBox massSpinbox;
     [Export] private CheckBox fragileCheckbox;
@@ -45,7 +46,7 @@ public partial class Item : Control
     [Export] private Button processButton;
     [Export] private VBoxContainer vertices;
     [Export] private PackedScene vertexPrefab;
-    [Export] private Label layerLabel;
+    [Export] private PackedScene layerSelectPrefab;
 
     private Action action;
 
@@ -101,20 +102,16 @@ public partial class Item : Control
         capsuleRadiusSpinbox.Value = 0.5f;
         capsuleHeightSpinbox.Value = 2f;
 
-        layerOption.Clear();
-        layerOption.AddItem("No Layer", 0);
         for (int i = 1; i <= 32; i++)
         {
             string str = ProjectSettings.GetSetting("layer_names/3d_physics/layer_" + i.ToString()).ToString();
             if(str != "")
             {
-                layerOption.AddItem(str, i);
+                LayerSelect layerSelect = layerSelectPrefab.Instantiate<LayerSelect>();
+                layerSelect.Initialize(str, i);
+                layerSelectContainer.AddChild(layerSelect);
             }
         }
-        layerOption.Selected = 1;
-        OnLayerSelected(1);
-
-        layerOption.ItemSelected += OnLayerSelected;
         verticesSlider.ValueChanged += OnVertexAmountChanged;
         massSpinbox.ValueChanged += OnMassChanged;
         massSlider.DragStarted += OnMassChangeStarted;
@@ -139,7 +136,6 @@ public partial class Item : Control
 
     public override void _ExitTree()
     {
-        layerOption.ItemSelected -= OnLayerSelected;
         verticesSlider.ValueChanged -= OnVertexAmountChanged;
         massSpinbox.ValueChanged -= OnMassChanged;
         massSlider.DragStarted -= OnMassChangeStarted;
@@ -214,11 +210,6 @@ public partial class Item : Control
         }
     }
 
-    private void OnLayerSelected(long layer)
-    {
-        layerLabel.Text = ("Layer " + layerOption.GetSelectedId().ToString()).Replace("Layer 0","No Layer");
-    }
-
     public float GetMass() { return (float)massSpinbox.Value; }
     public bool IsFragile() { return fragileCheckbox.ButtonPressed; }
     public float GetBoxWidth() { return (float)boxWidthSpinbox.Value; }
@@ -229,7 +220,17 @@ public partial class Item : Control
     public float GetCapsuleHeight() { return (float)capsuleHeightSpinbox.Value; }
     public float GetCylinderRadius() { return GetCapsuleRadius(); }
     public float GetCylinderHeight() { return GetCapsuleHeight(); }
-    public int GetLayer() { return layerOption.GetSelectedId(); }
+    public int[] GetLayers() 
+    {
+        List<int> layerList = new List<int>();
+        foreach(Node node in layerSelectContainer.GetChildren())
+        {
+            LayerSelect select = (LayerSelect)node;
+            int idx = select.CheckedState();
+            if(idx != -1) { layerList.Add(idx); }
+        }
+        return layerList.ToArray();
+    }
 
     public Vector3[] GetVertices()
     {
